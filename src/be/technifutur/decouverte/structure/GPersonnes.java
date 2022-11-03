@@ -20,6 +20,14 @@ public class GPersonnes {
         }
     }
 
+    public void SupressionPersonne(int personneASupprimer) {
+        for (int i = personneASupprimer; i < nbPersonnes - 1; i++) { // On démarre l'écrasement depuis l'index spécifié par l'utilisateur jusqu'à la fin, pour tout décaler d'une case
+            listePersonne[i] = listePersonne[i + 1];
+        }
+
+        nbPersonnes--;
+    }
+
     public int NbPersonnes() {
         return nbPersonnes;
     }

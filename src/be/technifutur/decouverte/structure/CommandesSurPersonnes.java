@@ -7,8 +7,7 @@ public class CommandesSurPersonnes {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        Personne[] usagers = new Personne[nbMaxPersonnes];
-        GPersonnes GPersonne = new GPersonnes(nbMaxPersonnes);
+        GPersonnes GUsagers = new GPersonnes(nbMaxPersonnes);
         int nbUsagers = 0;
         int input = 0;
 
@@ -31,17 +30,17 @@ public class CommandesSurPersonnes {
 //                    Permet de ne pas vérifier les conditions du switch si l'utilisateur veut sortir tout de suite
                     break;
                 case 2:
-                    AjoutUsager(GPersonne);
+                    AjoutUsager(GUsagers);
                     break;
                 case 3:
-                    if (GPersonne.NbPersonnes() == 0) {
+                    if (GUsagers.NbPersonnes() == 0) {
                         System.out.println("Aucune personne à afficher, tu espérais quoi ?");
                     } else {
-                        GPersonne.AffichageListe();
+                        GUsagers.AffichageListe();
                     }
                 case 4:
-                    if (GPersonne.NbPersonnes() == 0) {
-                        System.out.println("Aucune personne à modifier, tu espérais quoi ?");
+                    if (GUsagers.NbPersonnes() == 0) {
+                        System.out.println("Aucune personne à supprimer, tu espérais quoi ?");
                     } else {
                         System.out.println("Entrez le numéro de la personne à supprimer");
                         input = Integer.parseInt(scan.nextLine());
@@ -50,12 +49,13 @@ public class CommandesSurPersonnes {
                             System.out.println("Vous avez entré une coorodnée invalide");
                             input = Integer.parseInt(scan.nextLine());
                         }
-                        SupprimePersonne(usagers, nbUsagers , input);
+
+                        GUsagers.SupressionPersonne(input);
                     }
 
                     break;
                 case 5:
-                    if (GPersonne.NbPersonnes() == 0) {
+                    if (GUsagers.NbPersonnes() == 0) {
                         System.out.println("Aucune personne à modifier, tu espérais quoi ?");
                     } else {
                         System.out.println("Entrez le numéro de la personne à modifier");
@@ -71,26 +71,6 @@ public class CommandesSurPersonnes {
 
                     break;
             }
-        }
-    }
-
-    private static void SupprimePersonne(Personne[] usagers, int nbPersonnes, int input) {
-//        ClonePersonne(usagers, nbPersonnes, input);
-    }
-
-    private static void AffichagePersonnes(Personne[] usagers, int nbUsagers) {
-        for (int i = 0; i < nbUsagers; i++) {
-            System.out.print("Le prénom de la personne est ");
-            System.out.print(usagers[i].prenom);
-            System.out.print(" et son nom est ");
-            System.out.println(usagers[i].nom);
-            System.out.print("Cette personne est née le ");
-            System.out.print(usagers[i].naissance.jour);
-            System.out.print("/");
-            System.out.print(usagers[i].naissance.mois);
-            System.out.print("/");
-            System.out.println(usagers[i].naissance.annee);
-            System.out.println();
         }
     }
 
