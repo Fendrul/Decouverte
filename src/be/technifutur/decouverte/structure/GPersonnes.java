@@ -2,19 +2,19 @@ package be.technifutur.decouverte.structure;
 
 public class GPersonnes {
     int nbPersonnes;
-    Personne[] listePersonne;
+    static Personne[] listePersonne;
 
     GPersonnes(int nbMaxPersonnes) {
         nbPersonnes = 0;
         listePersonne = new Personne[nbMaxPersonnes];
     }
 
-    public void AjoutPersonne(String nomSaisi, String prenomSaisi, int jourSaisi, int moisSaisi, int anneeSaisie) {
-        listePersonne[nbPersonnes] = new Personne(nomSaisi, prenomSaisi, jourSaisi, moisSaisi, anneeSaisie);
+    public void AjoutPersonne(Personne personne) {
+        listePersonne[nbPersonnes] = personne;
         nbPersonnes++;
     }
 
-    public void AffichageListe() {
+    public void AffichageListePersonnes() {
         for (int i = 0; i < nbPersonnes; i++) {
             listePersonne[i].AffichagePersonne();
         }
@@ -26,6 +26,10 @@ public class GPersonnes {
         }
 
         nbPersonnes--;
+    }
+
+    public static Personne RetourPersonne(int indiceUsager) {
+        return listePersonne[indiceUsager];
     }
 
     public int NbPersonnes() {

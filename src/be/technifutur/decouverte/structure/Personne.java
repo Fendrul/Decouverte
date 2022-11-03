@@ -7,9 +7,9 @@ public class Personne {
 
     Personne() {}
 
-    Personne(String nomSaisi, String prenomSaisi, int jourSaisi, int moisSaisi, int anneeSaisie) {
-        nom = nomSaisi;
+    Personne(String prenomSaisi, String nomSaisi, int jourSaisi, int moisSaisi, int anneeSaisie) {
         prenom = prenomSaisi;
+        nom = nomSaisi;
 
         naissance = new MaDate(jourSaisi, moisSaisi, anneeSaisie);
     }
@@ -20,12 +20,20 @@ public class Personne {
         System.out.print(" et son nom est ");
         System.out.println(nom);
         System.out.print("Cette personne est née le ");
-        System.out.print(naissance.jour);
-        System.out.print("/");
-        System.out.print(naissance.mois);
-        System.out.print("/");
-        System.out.println(naissance.annee);
+        naissance.AffichageDate();
+        System.out.println();
         System.out.println();
     }
 
+    public void ModifPrenom(String nouveauPrenom) {
+        prenom = nouveauPrenom;
+    }
+
+    public void ModifNom(String nouveauNom) {
+        nom = nouveauNom;
+    }
+
+    public void ModifDate(int nouveauJour, int nouveauMois, int nouveleAnnee) {
+        naissance.ModifDate(nouveauJour, nouveauMois, nouveleAnnee);
+    }
 }
