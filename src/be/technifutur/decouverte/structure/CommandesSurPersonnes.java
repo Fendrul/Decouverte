@@ -9,9 +9,6 @@ public class CommandesSurPersonnes {
         boolean continueProcessus = true;
         int input = 0;
 
-        Personne simon = new Personne("Simon", "Strykers", 28, 10, 1997);
-        GUsagers.AjoutPersonne(simon);
-
         while (continueProcessus) {
             System.out.println("Quelle opération voulez-vous faire ?");
             System.out.println("0 - sortie");
