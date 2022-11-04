@@ -5,26 +5,32 @@ public class TestUnitaireCommandesSurPersonnes {
     public static void main(String[] args) {
         GPersonnes GUsers = new GPersonnes(20);
 
-        Personne usager;System.out.println("-------------------------------Test des commandes sur les usagers-------------------------------");
+        System.out.println("-------------------------------Test des commandes sur les usagers-------------------------------");
+        Personne usager;
         System.out.println();
 
         usager = new Personne("Simon", "Strykers", 28, 10, 1997);
         GUsers.AjoutPersonne(usager);
-        usager = new Personne("Mimi", "mati", 8, 7, 1957);
+        usager = new Personne("Mimi", "Mati", 8, 7, 1957);
+        GUsers.AjoutPersonne(usager);
+        usager = new Personne("Mimi", "Stronghold", 28, 9, 1975);
         GUsers.AjoutPersonne(usager);
         usager = new Personne("Chantal", "Goya", 10, 6, 1942);
         GUsers.AjoutPersonne(usager);
         usager = new Personne("Johnny", "Hallyday", 15, 6, 1943);
         GUsers.AjoutPersonne(usager);
+        usager = new Personne("Daniyal", "Yunusau", 1, 3, 1996);
+        GUsers.AjoutPersonne(usager);
+
         GUsers.AffichageListePersonnes();
 
-        System.out.println("-------------------------------Test de la suppression-------------------------------");
+        /*System.out.println("-------------------------------Test de la suppression-------------------------------");
         System.out.println();
 
         GUsers.SupressionPersonne(4);
-        GUsers.AffichageListePersonnes();
+        GUsers.AffichageListePersonnes();*/
 
-        System.out.println("-------------------------------Test de la modification-------------------------------");
+        /*System.out.println("-------------------------------Test de la modification-------------------------------");
         System.out.println();
 
         usager = GUsers.RetourPersonne(0);
@@ -36,6 +42,11 @@ public class TestUnitaireCommandesSurPersonnes {
         usager = GUsers.RetourPersonne(2);
         usager.ModifPrenom("chupachups");
 
-        GUsers.AffichageListePersonnes();
+        GUsers.AffichageListePersonnes();*/
+
+        /*System.out.println("-------------------------------Test de la recherche-------------------------------");
+        System.out.println();
+
+        GUsers.recherche("Mimi");*/
     }
 }

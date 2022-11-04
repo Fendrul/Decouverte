@@ -16,8 +16,10 @@ public class CommandesSurPersonnes {
             System.out.println("2 - lister les personnes");
             System.out.println("3 - supprimer une personne");
             System.out.println("4 - modifier une personne");
+            System.out.println("5 - effectuer une recherche par nom/prénom");
+            System.out.println("6 - trier la liste");
 
-            while (!cons.iScanBorne(0, 4)) {
+            while (!cons.iScanBorne(0, 6)) {
                 System.out.println("Mauvaise saisie, recommencez.");
             }
             input = cons.ReturniInput();
@@ -66,6 +68,40 @@ public class CommandesSurPersonnes {
                         input = cons.ReturniInput();
 
                         ModifPersonne(GUsagers, input - 1);
+                    }
+                    break;
+
+                case 5:
+                    if (GUsagers.NbPersonnes() == 0) {
+                        System.out.println("Mais y'a rien à rechercher, tu espérais quoi ?");
+                    } else {
+                        String recherche;
+
+                        System.out.println("Entrez le nom ou prénom à rechercher");
+                        recherche = cons.sInput();
+
+                        GUsagers.recherche(recherche);
+                    }
+                    break;
+
+                case 6:
+                    if (GUsagers.NbPersonnes() == 0) {
+                        System.out.println("Mais y'a rien à trier, tu espérais quoi ?");
+                    } else {
+                        System.out.println("Tri par :");
+                        System.out.println("1 - prénom");
+                        System.out.println("2 - nom");
+                        System.out.println("3 - date de naissance");
+
+                        while (cons.iScanBorne(1, 3))
+                            System.out.println("mauvaise entrée");
+                        input = cons.ReturniInput();
+
+                        switch(input) {
+                            case default, 1 -> GUsagers.tri(1);
+                            case 2 -> GUsagers.tri(2);
+                            case 3 -> GUsagers.tri(3);
+                        }
                     }
                     break;
             }

@@ -32,7 +32,27 @@ public class GPersonnes {
         return listePersonne[indiceUsager];
     }
 
+    public void recherche(String recherche) {
+        for (int i = 0; i < nbPersonnes; i++) {
+            if (listePersonne[i].recherche(recherche)) {
+                listePersonne[i].AffichagePersonne();
+            }
+        }
+    }
+
     public int NbPersonnes() {
         return nbPersonnes;
+    }
+
+    /**
+     * Trie la liste des utilisateurs suivant le style de tri demandé par le paramètre
+     * @param typeTri 1: tri par prénom, 2: tri par nom, 3: tri par date
+     */
+    public void tri(int typeTri) {
+        Personne tempSwap;
+
+        for (int i = 0; i < nbPersonnes; i++) {
+
+        }
     }
 }
