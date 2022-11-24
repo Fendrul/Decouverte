@@ -9,7 +9,6 @@ public class TestString {
 
     private static void testEgalite() {
         String s = "Luke";
-        String
     }
 
     private static void testStringBuilder() {

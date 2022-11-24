@@ -1,15 +1,17 @@
 package be.technifutur.decouverte.poo;
 
-public class VaisseauMethode {
+import java.util.Objects;
+
+public class VaisseauAncetre {
     private static int nbVaisseauxEnVol = 0;
     private int nbMissile = 5;
     private boolean enVol = false;
     boolean Daniyal = false;
 
-    VaisseauMethode() {
+    VaisseauAncetre() {
     }
 
-    VaisseauMethode(int missilesAInserer) {
+    VaisseauAncetre(int missilesAInserer) {
         if (missilesAInserer >= 0)
             nbMissile = missilesAInserer;
     }
@@ -70,6 +72,14 @@ public class VaisseauMethode {
         }
     }
 
+    public boolean isEnVol() {
+        return enVol;
+    }
+
+    public void afficherCamp() {
+        System.out.println("Je suis neutre !");
+    }
+
     public void fctDaniyal() {
         if (!Daniyal)
             System.out.println("haha, il est vraiment trop négatif comme mec mdrrrrrrr xptdr trololol ce normie");
@@ -79,5 +89,18 @@ public class VaisseauMethode {
         }
 
         System.out.println("haha il est trop roasté");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VaisseauAncetre that = (VaisseauAncetre) o;
+        return nbMissile == that.nbMissile && enVol == that.enVol && Daniyal == that.Daniyal;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nbMissile, enVol, Daniyal);
     }
 }
