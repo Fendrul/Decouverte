@@ -1,6 +1,8 @@
 package be.technifutur.decouverte.collections._2_what_are_collections.after;
 
-import com.monotonic.collections.common.Product;
+//import com.monotonic.collections.common.Product;
+
+import be.technifutur.decouverte.collections.common.Product;
 
 import java.util.Arrays;
 

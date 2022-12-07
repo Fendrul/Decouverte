@@ -1,6 +1,6 @@
 package be.technifutur.decouverte.collections._6_operations.after;
 
-import com.monotonic.collections.common.Product;
+import be.technifutur.decouverte.collections.common.Product;
 
 import java.util.ArrayList;
 import java.util.Collections;
