@@ -1,11 +1,14 @@
 package be.technifutur.decouverte.structure;
 
+import be.technifutur.decouverte.console.Console;
+import be.technifutur.decouverte.console.ConsoleViaScan;
+
 public class CommandesSurPersonnes {
     private static final int nbMaxPersonnes = 20;
 
     public static void main(String[] args) {
         GPersonnes GUsagers = new GPersonnes(nbMaxPersonnes);
-        Console cons = new Console();
+        ConsoleViaScan cons = new ConsoleViaScan();
         boolean continueProcessus = true;
         int input = 0;
 
@@ -109,7 +112,7 @@ public class CommandesSurPersonnes {
     }
 
     private static void AjoutUsager(GPersonnes GUsager) {
-        Console cons = new Console();
+        ConsoleViaScan cons = new ConsoleViaScan();
         Personne usager;
         String nom;
         String prenom;
@@ -149,7 +152,7 @@ public class CommandesSurPersonnes {
         Personne usager = GUsagers.RetourPersonne(indiceUsager);
         boolean modifications = true;
         int input = 0;
-        Console cons = new Console();
+        ConsoleViaScan cons = new ConsoleViaScan();
 
         usager.AffichagePersonne();
 
@@ -206,5 +209,7 @@ public class CommandesSurPersonnes {
             if (input == 0)
                 modifications = false;
         }
+
     }
+
 }
