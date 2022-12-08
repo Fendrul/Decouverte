@@ -2,34 +2,29 @@ package be.technifutur.decouverte.collections.common;
 
 import java.util.Comparator;
 
-public class Product
-{
+public class Product {
     private final String name;
     private final int weight;
 
-    public Product(String name, int weight)
-    {
+    public Product(String name, int weight) {
         this.name = name;
         this.weight = weight;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public int getWeight()
-    {
+    public int getWeight() {
         return weight;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Product{" +
-            "name='" + name + '\'' +
-            ", weight=" + weight +
-            '}';
+                "name='" + name + '\'' +
+                ", weight=" + weight +
+                '}';
     }
 
     public static final Comparator<Product> BY_WEIGHT =
