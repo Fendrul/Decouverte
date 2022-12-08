@@ -1,6 +1,8 @@
 package be.technifutur.decouverte.console;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class TestConsole {
 
@@ -16,18 +18,7 @@ public class TestConsole {
 //        number = cons.iScan();
 //        System.out.println(number);
 
-        int dim = 3;
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(" %s ".repeat(dim));
-        sb.append("|");
-        sb.append(sb.toString().repeat(dim - 1));
-        sb.append("\n");
-        sb.append(sb.toString().repeat(dim - 1));
-
-        sb.append(sb.toString().repeat(dim - 1));
-
-        String str = sb.toString();
-        System.out.println(str);
+        ArrayList<Character> names = new ArrayList<>(Arrays.asList('A', 'B', 'C'));
+        System.out.printf("The names are: %c\n", names);
     }
 }
