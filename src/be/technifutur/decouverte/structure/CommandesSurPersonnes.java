@@ -1,6 +1,5 @@
 package be.technifutur.decouverte.structure;
 
-import be.technifutur.decouverte.console.Console;
 import be.technifutur.decouverte.console.ConsoleViaScan;
 
 public class CommandesSurPersonnes {
@@ -22,7 +21,7 @@ public class CommandesSurPersonnes {
             System.out.println("5 - effectuer une recherche par nom/prénom");
             System.out.println("6 - trier la liste");
 
-            while (!cons.iScanBorne(0, 6)) {
+            while (!cons.integerEdge(0, 6)) {
                 System.out.println("Mauvaise saisie, recommencez.");
             }
             input = cons.ReturniInput();
@@ -50,7 +49,7 @@ public class CommandesSurPersonnes {
                     } else {
                         System.out.println("Entrez le numéro de la personne à supprimer");
 
-                        while (!cons.iScanBorne(1, GUsagers.NbPersonnes())) {
+                        while (!cons.integerEdge(1, GUsagers.NbPersonnes())) {
                             System.out.println("Vous avez entré une coordonnée invalide");
                         }
                         input = cons.ReturniInput();
@@ -65,7 +64,7 @@ public class CommandesSurPersonnes {
                     } else {
                         System.out.println("Entrez le numéro de la personne à modifier");
 
-                        while (!cons.iScanBorne(1, GUsagers.NbPersonnes())) {
+                        while (!cons.integerEdge(1, GUsagers.NbPersonnes())) {
                             System.out.println("Vous avez entré une coordonnée invalide");
                         }
                         input = cons.ReturniInput();
@@ -81,7 +80,7 @@ public class CommandesSurPersonnes {
                         String recherche;
 
                         System.out.println("Entrez le nom ou prénom à rechercher");
-                        recherche = cons.sInput();
+                        recherche = cons.string();
 
                         GUsagers.recherche(recherche);
                     }
@@ -96,7 +95,7 @@ public class CommandesSurPersonnes {
                         System.out.println("2 - nom");
                         System.out.println("3 - date de naissance");
 
-                        while (cons.iScanBorne(1, 3))
+                        while (cons.integerEdge(1, 3))
                             System.out.println("mauvaise entrée");
                         input = cons.ReturniInput();
 
@@ -121,25 +120,25 @@ public class CommandesSurPersonnes {
         int annee;
 
         System.out.println("Entrez son prénom");
-        prenom = cons.sInput();
+        prenom = cons.string();
         System.out.println("Entrez son nom");
-        nom = cons.sInput();
+        nom = cons.string();
 
         System.out.println("Quel jour est-il né ?");
 
-        while (!cons.iScanBorne(1, 31)) {
+        while (!cons.integerEdge(1, 31)) {
             System.out.println("Ne soyez pas trop stupides quand même, entrez un jour un minimum valide au moins dans un cas posible.");
         }
         jour = cons.ReturniInput();
 
         System.out.println("Quel mois est-il né ?");
-        while (!cons.iScanBorne(1, 12)) {
+        while (!cons.integerEdge(1, 12)) {
             System.out.println("Ne soyez pas trop stupides quand même, entrez un moi un minimum valide au moins dans un cas posible.");
         }
         mois = cons.ReturniInput();
 
         System.out.println("Quelle année est-il né ?");
-        while (!cons.iScanBorne(1900, 2022)) {
+        while (!cons.integerEdge(1900, 2022)) {
             System.out.println("Ne soyez pas trop stupides quand même, entrez une année un minimum valide au moins dans un cas posible.");
         }
         annee = cons.ReturniInput();
@@ -162,7 +161,7 @@ public class CommandesSurPersonnes {
             System.out.println("2 - le nom");
             System.out.println("3 - la date");
 
-            while (!cons.iScanBorne(1, 3)) {
+            while (!cons.integerEdge(1, 3)) {
                 System.out.println("Mauvaise saisie, recommencez.");
             }
             input = cons.ReturniInput();
@@ -170,12 +169,12 @@ public class CommandesSurPersonnes {
             switch (input) {
                 case 1:
                     System.out.println("Entrez le nouveau prénom");
-                    usager.ModifPrenom(cons.sInput());
+                    usager.ModifPrenom(cons.string());
                     break;
 
                 case 2:
                     System.out.println("Entrez le nouveau nom");
-                    usager.ModifNom(cons.sInput());
+                    usager.ModifNom(cons.string());
                     break;
 
                 case 3:
@@ -185,15 +184,15 @@ public class CommandesSurPersonnes {
 
                     System.out.println("Entrez la nouvelle date");
                     System.out.print("jour : ");
-                    jour = cons.iScan();
+                    jour = cons.integer();
                     System.out.println();
 
                     System.out.print("mois : ");
-                    mois = cons.iScan();
+                    mois = cons.integer();
                     System.out.println();
 
                     System.out.print("annee : ");
-                    annee = cons.iScan();
+                    annee = cons.integer();
                     System.out.println();
 
                     usager.ModifDate(jour, mois, annee);
@@ -201,7 +200,7 @@ public class CommandesSurPersonnes {
 
             System.out.println("Voulez-vous encore apporter des modifications ? 0: NON / 1: Oui");
 
-            while (!cons.iScanBorne(0, 1)) {
+            while (!cons.integerEdge(0, 1)) {
                 System.out.println("mauvaise entrée");
             }
             input = cons.ReturniInput();

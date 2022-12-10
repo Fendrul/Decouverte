@@ -2,6 +2,9 @@ package be.technifutur.decouverte.console;
 
 import java.io.*;
 
+/**
+ * Toutes les fonctions de scan de console vont boucler jusqu'à avoir le type de valeur voulue
+ */
 public class ConsoleViaFichier implements Console {
 
     BufferedReader br;
@@ -33,12 +36,16 @@ public class ConsoleViaFichier implements Console {
     }
 
     @Override
-    public int iScan() {
+    public int integer() {
         String st;
 
         try {
             if ((st = br.readLine()) != null)
                 return Integer.parseInt(st);
+
+        } catch (IllegalArgumentException ignored) {
+            print("ConsoleViaFichier.integer : mauvais nombre inséré, un long était attendu");
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -47,12 +54,16 @@ public class ConsoleViaFichier implements Console {
     }
 
     @Override
-    public boolean iScanBorne(int borneInferieure, int borneSuperieure) {
+    public boolean integerEdge(int borneInferieure, int borneSuperieure) {
         String st;
 
         try {
             if ((st = br.readLine()) != null)
                 return Integer.parseInt(st) >= borneInferieure && Integer.parseInt(st) <= borneSuperieure;
+
+        } catch (IllegalArgumentException ignored) {
+            print("ConsoleViaFichier.integer : mauvais nombre inséré, un long était attendu");
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -66,17 +77,27 @@ public class ConsoleViaFichier implements Console {
     }
 
     @Override
-    public String sInput() {
+    public String string() {
         return null;
     }
 
     @Override
-    public char cInput() {
+    public char character() {
         return 0;
     }
 
     @Override
-    public void affichage(String... values) {
+    public long longer() {
+        return 0;
+    }
+
+    @Override
+    public double doubled() {
+        return 0;
+    }
+
+    @Override
+    public void print(Object... values) {
 
     }
 }

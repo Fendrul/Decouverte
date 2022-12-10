@@ -10,7 +10,7 @@ public class Alternatives {
         Integer iTest;
         char cTest;
 
-        cTest = cons.cInput();
+        cTest = cons.character();
 
         if (cTest > '1' && cTest < '9') System.out.println("Ça fonctionne !!");
         else System.out.println("ça n'est pas un nombre caractère !");
