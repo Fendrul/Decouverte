@@ -26,7 +26,7 @@ public class problem11 {
                 if (j >= DIRECTION_SIZE)
                     products[2] = verifDiagLeft(tab, i, j);
                 
-                products[4] = verifDown(tab);
+                products[3] = verifDown(tab, i, j);
 
                 for (int product :
                         products) {
@@ -38,8 +38,13 @@ public class problem11 {
         System.out.println(maxProduct);
     }
 
-    private static int verifDown(int[][] tab) {
+    private static int verifDown(int[][] tab, int i, int j) {
         int result = 1;
+
+        for (int k = 0; k < DIRECTION_SIZE; k++) {
+            result *= tab[i+k][j];
+        }
+
         return result;
     }
 

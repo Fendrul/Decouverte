@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 public class problem18 {
         public static void main(String[] args) throws IOException {
-                ConsoleViaFichier cons = new ConsoleViaFichier("src\\be\\technifutur\\decouverte\\euler\\ressources\\problem18.txt");
+                ConsoleViaFichier cons = new ConsoleViaFichier("src\\be\\technifutur\\decouverte\\euler\\ressources\\problem67.txt");
 
                 int[][] tab = cons.intTab(" ");
                 int tabLength = tab.length;
