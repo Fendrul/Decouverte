@@ -39,10 +39,10 @@ public class ConsoleViaFichier implements Console {
     }
 
     public int[] lineArray(String separator) {
-        return Arrays.stream(string()
+        return Arrays.stream(string() // string est une fonction de la classe renvoyant une ligne du fichier en tant que String
                 .split(separator))
-                .mapToInt(Integer::parseInt)
-                .toArray();
+                .mapToInt(Integer::parseInt) // traite chaque élément pour les transformer en un int
+                .toArray(); //converti le steam d'int en un int[]
     }
 
     /**
@@ -56,8 +56,8 @@ public class ConsoleViaFichier implements Console {
 
         while (hasNext()) {
             List<Integer> entry = Arrays.stream(lineArray(separator))
-                    .boxed()
-                    .collect(Collectors.toList());
+                    .boxed()// Converti les valeurs primitives du stream en leur objet correspondant (ex : int -> Integer)
+                    .collect(Collectors.toList()); // crée un collecteur des éléments puis les transforme en un seul objet (ici une List)
 
             listTab.add(entry);
         }
