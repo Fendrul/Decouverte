@@ -1,22 +1,22 @@
 package be.technifutur.decouverte.console;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Toutes les fonctions de scan de console vont boucler jusqu'à avoir le type de valeur voulue
  */
 public class ConsoleViaFichier implements Console {
 
-    BufferedReader br;
+    private BufferedReader br;
 
-    @Override
-    public String toString() {
-        return "ConsoleViaFichier{" +
-                "br=" + br +
-                '}';
-    }
 
-    ConsoleViaFichier(String cheminFichier) {
+
+    public ConsoleViaFichier(String cheminFichier) {
         try {
             br = new BufferedReader(new FileReader(new File(cheminFichier)));
         } catch (FileNotFoundException e) {
@@ -33,6 +33,39 @@ public class ConsoleViaFichier implements Console {
                 System.out.println("Échec dans la fermeture de fichier");
             }
         }
+    }
+
+    public boolean hasNext() throws IOException {
+        return br.ready();
+    }
+
+    public int[] intLineArray(String separator) {
+        return Arrays.stream(string()
+                .split(separator))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+    }
+
+    /**
+     * !!! cette méthode lit l'entièreté du fichier pour le transformer en un int[][]
+     * @param separator le(s) caractère(s) servant à séparer une ligne en un array
+     * @return le tableau construit sur base du fichier
+     * @throws IOException
+     */
+    public int[][] intTab(String separator) throws IOException {
+        List<List<Integer>> listTab = new ArrayList<>();
+
+        while (hasNext()) {
+            List<Integer> entry = Arrays.stream(intLineArray(separator))
+                    .boxed()
+                    .collect(Collectors.toList());
+
+            listTab.add(entry);
+        }
+
+        return listTab.stream()
+                .map(l -> l.stream().mapToInt(x -> x).toArray())
+                .toArray(int[][]::new);
     }
 
     @Override
@@ -72,13 +105,24 @@ public class ConsoleViaFichier implements Console {
     }
 
     @Override
+    public String toString() {
+        return "ConsoleViaFichier{" +
+                "br=" + br +
+                '}';
+    }
+
+    @Override
     public int ReturniInput() {
         return 0;
     }
 
     @Override
     public String string() {
-        return null;
+        try {
+            return br.readLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -98,6 +142,10 @@ public class ConsoleViaFichier implements Console {
 
     @Override
     public void print(Object... values) {
-
+        for (Object o :
+                values) {
+            System.out.print(o);
+        }
+        System.out.println();
     }
 }
