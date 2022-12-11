@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * Toutes les fonctions de scan de console vont boucler jusqu'à avoir le type de valeur voulue
@@ -39,7 +38,7 @@ public class ConsoleViaFichier implements Console {
         return br.ready();
     }
 
-    public int[] intLineArray(String separator) {
+    public int[] lineArray(String separator) {
         return Arrays.stream(string()
                 .split(separator))
                 .mapToInt(Integer::parseInt)
@@ -56,7 +55,7 @@ public class ConsoleViaFichier implements Console {
         List<List<Integer>> listTab = new ArrayList<>();
 
         while (hasNext()) {
-            List<Integer> entry = Arrays.stream(intLineArray(separator))
+            List<Integer> entry = Arrays.stream(lineArray(separator))
                     .boxed()
                     .collect(Collectors.toList());
 

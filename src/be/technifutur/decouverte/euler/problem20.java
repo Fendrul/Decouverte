@@ -1,4 +1,4 @@
-package be.technifutur.decouverte.euler.ressources;
+package be.technifutur.decouverte.euler;
 
 import java.math.BigInteger;
 import java.util.Arrays;
@@ -15,6 +15,8 @@ public class problem20 {
             number = number.multiply(intToBigInt(i));
         }
 
+        System.out.println(number);
+
         int[] arrayNumerals = Arrays.stream(
                 number.toString()
                 .split(""))
@@ -25,7 +27,7 @@ public class problem20 {
                 arrayNumerals) {
             sum += i;
         }
-        System.out.println(sum);
+        System.out.printf("Nombre de chiffres : %d, somme des chiffres : %d", arrayNumerals.length, sum);;
     }
 
     private static BigInteger intToBigInt(int num) {
