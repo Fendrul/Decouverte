@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class problem21 {
 
-    public static final int LIMIT_AMICABLE_NUMBER = 10000;
+    public static final int LIMIT_AMICABLE_NUMBER = 1000000;
 
     public static void main(String[] args) {
         HashMap<Integer, Integer> amicableMap = new HashMap<>();
@@ -28,16 +28,16 @@ public class problem21 {
         }
 
         int sumAmicable = 0;
-        for (int reference = 1; reference < LIMIT_AMICABLE_NUMBER; reference++) {
-            boolean amicableNumFound = false;
+        for (int number1 = 1; number1 < LIMIT_AMICABLE_NUMBER; number1++) {
 
-            if (amicableMap.get(reference) != 0) { // Pas besoin de procéder à la vérification du nombre si celui-ci a déjà été comtpé dans les nombres amicaux
+            if (amicableMap.get(number1) != 0) { // Peut passer le nombre s'il a déjà été vérifié auparavant
+                int number2 = amicableMap.get(number1); // Recherche la référence du deuxième nombre à comparer
 
-                for (int compare = reference + 1; compare <= LIMIT_AMICABLE_NUMBER; compare++) {
-                    if (Objects.equals(amicableMap.get(reference), compare) && Objects.equals(amicableMap.get(compare), reference)) {
-                        sumAmicable += compare + reference;
-                        amicableMap.put(compare, 0); // Passe la valeur à 0 afin de ne plus avoir d'impact dans le calcul
-                    }
+                //vérifie si les nombres sont amicaux
+                if (Objects.equals(amicableMap.get(number1), number2) && Objects.equals(amicableMap.get(number2), number1) && number1 != number2) {
+                    sumAmicable += number1 + number2;
+                    System.out.printf("(%d : %d)\n", number1, number2);
+                    amicableMap.put(number2 , 0); // Passe la valeur à 0 afin de ne plus devoir boucler sur ce nombre comme on en a déjà trouvé un amicable
                 }
             }
         }
