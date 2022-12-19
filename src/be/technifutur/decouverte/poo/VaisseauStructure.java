@@ -1,6 +1,7 @@
 package be.technifutur.decouverte.poo;
 
 public class VaisseauStructure {
+    // variables d'instances
     String pilote;
-    String nom;
+    public String nom;
 }

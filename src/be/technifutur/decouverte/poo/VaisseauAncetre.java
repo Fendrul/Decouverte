@@ -2,105 +2,95 @@ package be.technifutur.decouverte.poo;
 
 import java.util.Objects;
 
-public class VaisseauAncetre {
-    private static int nbVaisseauxEnVol = 0;
-    private int nbMissile = 5;
-    private boolean enVol = false;
-    boolean Daniyal = false;
+public abstract class VaisseauAncetre {
+    // variables de classes
+    private static int nbEnvol = 0;
+    // variables d'instances
+    protected int nbMisille = 5;
+    private boolean enVol =false;
 
-    VaisseauAncetre() {
-    }
+    private String name = "test";
 
-    VaisseauAncetre(int missilesAInserer) {
-        if (missilesAInserer >= 0)
-            nbMissile = missilesAInserer;
-    }
-
-
-    public static int getNbVaisseauxEnVol() {
-        return nbVaisseauxEnVol;
-    }
-
-    public void tirer() {
-        if (nbMissile <= 0) {
-            System.out.println("clic clic clic");
-        } else {
-            System.out.println("piou piou piou !");
-            nbMissile--;
+    // constructeur
+    public VaisseauAncetre(int nbMisille) {
+        if(nbMisille>=0) {
+            this.nbMisille = nbMisille;
         }
     }
 
-    public void recharger() {
-        nbMissile++;
+    // accesseur
+    public boolean isEnVol(){
+        return enVol;
+    }
+    public abstract void afficherCamps();
 
-        if (nbMissile < 0)
-            nbMissile--;
-        else
-            System.out.println("crack crack - rechargement");
+    // méthodes d'instances
+    public void tirer(){
+        if(this.nbMisille > 0){
+            System.out.println("PAN");
+            this.nbMisille =this.nbMisille - 1;
+        }else{
+            System.out.println("POUF");
+        }
     }
 
-    public void recharger(int qttRecharge) {
-        nbMissile += qttRecharge;
-
-        if (nbMissile < 0)
-            nbMissile -= qttRecharge;
-        else
-            System.out.println("crack crack - rechargement de " + qttRecharge + " missiles");
+    // accesseur en lecture
+    public int getNbMissiles() {
+        return nbMisille;
     }
 
-    public int qttMissiles() {
-        return nbMissile;
+    public void addMissiles(int nbMissile) {
+        if(this.nbMisille + nbMissile >=0){
+            this.nbMisille += nbMissile;
+        }
     }
 
     public void decoller() {
-        if (enVol)
-            System.out.println("JE VOLE DEJA COMME UN OISEAU");
-        else {
-            System.out.println("JE DECOLLE");
+        if(! enVol) {
+            System.out.println("je décolle");
             enVol = true;
-            nbVaisseauxEnVol++;
+            VaisseauAncetre.nbEnvol++;
+        }else{
+            System.out.println("je suis déjà en vol");
         }
     }
 
     public void atterrir() {
-        if (!enVol)
-            System.out.println("JE SUIS DEJA AU SOL, TOUT COMME TA REPARTIE");
-        else {
-            System.out.println("ATTENTION, J'ATTERRIS");
+        if(enVol) {
+            System.out.println("me voila au sol");
             enVol = false;
-            nbVaisseauxEnVol--;
+            VaisseauAncetre.nbEnvol--;
+        }else {
+            System.out.println("je suis déjà au sol");
         }
     }
 
-    public boolean isEnVol() {
-        return enVol;
-    }
-
-    public void afficherCamp() {
-        System.out.println("Je suis neutre !");
-    }
-
-    public void fctDaniyal() {
-        if (!Daniyal)
-            System.out.println("haha, il est vraiment trop négatif comme mec mdrrrrrrr xptdr trololol ce normie");
-        else {
-            System.out.println("wtf pourquoi il est positif, arrêtons ça");
-            Daniyal = false;
-        }
-
-        System.out.println("haha il est trop roasté");
+    @Override
+    public String toString() {
+        return "VaisseauAncetre{" +
+                "nbMisille=" + nbMisille +
+                ", enVol=" + enVol +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         VaisseauAncetre that = (VaisseauAncetre) o;
-        return nbMissile == that.nbMissile && enVol == that.enVol && Daniyal == that.Daniyal;
+
+        if (nbMisille != that.nbMisille) return false;
+        if (enVol != that.enVol) return false;
+        return Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nbMissile, enVol, Daniyal);
+        int result = nbMisille;
+        result = 31 * result + (enVol ? 1 : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 }

@@ -1,13 +1,13 @@
 package be.technifutur.decouverte.poo;
 
-public class Xwing extends VaisseauAncetre {
+public class Xwing extends VaisseauAncetre{
 
-    public Xwing(int nbMissiles) {
-        super(nbMissiles);
+    public Xwing(int nbMisille) {
+        super(nbMisille);
     }
 
     @Override
-    public void afficherCamp() {
-        System.out.println("Je suis un vaisseau de l'empire !");
+    public void afficherCamps() {
+        System.out.println("je suis un vaisseau de l'empire");
     }
 }
