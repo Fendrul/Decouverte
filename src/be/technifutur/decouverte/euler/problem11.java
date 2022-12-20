@@ -1,79 +1,39 @@
 package be.technifutur.decouverte.euler;
 
-import be.technifutur.decouverte.console.ConsoleViaFichier;
-
-import java.io.IOException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 
 public class problem11 {
-
-    public static final int DIRECTION_SIZE = 4;
-
-    public static void main(String[] args) throws IOException {
-        ConsoleViaFichier cons = new ConsoleViaFichier("src\\be\\technifutur\\decouverte\\euler\\ressources\\problem11.txt");
-        int[][] tab = cons.intTab(" ");
-        int tabLength = tab.length;
-        int tabWidth = tab[0].length;
-        int maxProduct = 0;
-
-        for (int i = 0; i < tabLength - DIRECTION_SIZE; i++) {
-            for (int j = 0; j < tabWidth; j++) {
-                    int[] products = new int[4];
-                
-                if (j < tabWidth - DIRECTION_SIZE) {
-                    products[0] = verifRight(tab, i, j);
-                    products[1] = verifDiagRight(tab, i, j);
-                }
-                if (j >= DIRECTION_SIZE)
-                    products[2] = verifDiagLeft(tab, i, j);
-                
-                products[3] = verifDown(tab, i, j);
-
-                for (int product :
-                        products) {
-                    maxProduct = Math.max(product, maxProduct);
-                }
-            }
-        }
-
-        System.out.println(maxProduct);
+    public static void main(String[] args) {
+        int[][] tab = createTab("src/be/technifutur/decouverte/euler/ressources/problem11.txt");
     }
 
-    private static int verifDown(int[][] tab, int i, int j) {
-        int result = 1;
+    private static int[][] createTab(String s) {
+        File file = new File(s);
+        List<Integer> newTab = new ArrayList<>();
+        int[] test = new int[5];
 
-        for (int k = 0; k < DIRECTION_SIZE; k++) {
-            result *= tab[i+k][j];
+        try (Scanner scan = new Scanner(file)) {
+
+//            while (scan.hasNextLine()) {
+//                newTab.addAll(Arrays.asList(
+//                        stringNumToArr(scan.nextLine())
+//                );
+//            }
+
+        } catch (FileNotFoundException fnf) {
+            System.out.printf("Fichier à l'emplacement %s non trouvé", s);
         }
 
-        return result;
+        int[][] returnTab = new int[newTab.size()][];
+
+        return returnTab;
     }
 
-    private static int verifDiagLeft(int[][] tab, int i, int j) {
-        int result = 1;
-
-        for (int k = 0; k < DIRECTION_SIZE; k++) {
-            result *= tab[i+k][j-k];
-        }
-
-        return result;
-    }
-
-    private static int verifDiagRight(int[][] tab, int i, int j) {
-        int result = 1;
-
-        for (int k = 0; k < DIRECTION_SIZE; k++) {
-            result *= tab[i+k][j+k];
-        }
-
-        return result;
-    }
-
-    private static int verifRight(int[][] tab, int i, int j) {
-        int result = 1;
-
-        for (int k = 0; k < DIRECTION_SIZE; k++) {
-            result *= tab[i][j+k];
-        }
-        return result;
-    }
+//    private static int[] stringNumToArr(String nextLine) {
+//    }
+//
+//    private static int[] stringNumbersToArray(String nextLine) {
+//    }
 }
