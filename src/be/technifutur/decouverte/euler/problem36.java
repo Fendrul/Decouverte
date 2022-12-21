@@ -10,10 +10,8 @@ public class problem36 {
             int[] digits = intToDigits(number);
             int[] binaryDigits = intToDigits(Integer.toBinaryString(number));
 
-//            if (checkPalindrome(digits))
             if (checkPalindrome(digits) && checkPalindrome(binaryDigits)) {
                 sumDoublebasePalindrome += number;
-                System.out.printf("Gagnant avec %d\n", number);
             }
         }
 
